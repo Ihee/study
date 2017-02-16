@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 	lnbControl(); // LNB 사이즈 제어 스크립트 실행
 	
-	$(document).on('click', 'button[data-toggle=modal]', function(){
+	$(document).on('click', 'button[data-toggle=modal]', function(){ //모달 실행 버튼 클릭 할 경우 얼럿 사이즈 체크 함수 실행
 		alertSizeChk();
 	});
 });
@@ -48,7 +48,7 @@ $(document).ready(function(){
 function alertSizeChk() {
 	var target = $('#'+$('.modal:visible').attr('id'));
 	var targetAlert = target.find('.alert');
-	if (targetAlert.length > 0){
+	if (targetAlert.length > 0){ //모달이 얼럿 스타일인 경우에 실행
 		var targetAlertCon = target.find('.alert-con');
 		var alertW = targetAlertCon.width();
 		var winH = $(window).outerHeight();
@@ -72,7 +72,7 @@ function alertSizeChk() {
 	}
 }
 
-/* LNB 사이즈 제어 */
+/* LNB 넓이 제어 */
 function lnbControl() {
 	var toggleBtn = $('.lnb-control');
 	var lnb = $('#lnb');
@@ -107,3 +107,14 @@ function lnbControl() {
 		}
 	});
 }
+
+/* show hide trigger 추가 : 이유는 모르겠으나 bootstrap modal js api와 충돌있음 */
+(function ($) {
+	$.each(['show', 'hide'], function (i, ev) {
+		var el = $.fn[ev];
+		$.fn[ev] = function () {
+			this.trigger(ev);
+			return el.apply(this, arguments);
+		};
+	});
+})(jQuery);
