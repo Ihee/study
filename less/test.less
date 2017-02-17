@@ -5,16 +5,16 @@
 
 /*reset*/
 html,body {width: 100%; height: 100%;}
-body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,a,button,select,ul,li,span,em{margin: 0;padding: 0; line-height: 1.1; box-sizing: border-box;}
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,a,button,select,ul,li,span,em{.default-tag-set;}
 body,input,textarea,select,button,table{.default-font-set;}
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section{display: block; margin: 0;padding: 0; line-height: 1.1; box-sizing: border-box;}
-body{position: relative}
-img,fieldset{border: 0}
-img{vertical-align: top}
-ul,ol{list-style: none}
-em,address,i{font-style: normal}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section{display: block; .default-tag-set;}
+body{position: relative;}
+img,fieldset{border: 0;}
+img{vertical-align: top;}
+ul,ol{list-style: none;}
+em,address,i{font-style: normal;}
 hr,legend{.sr-only;}
-a{text-decoration: none}
+a{text-decoration: none;}
 a:hover,
 a:active,
 a:focus{.transition(.15s); text-decoration: none;}
@@ -30,29 +30,27 @@ input[type="text"], input[type="password"], input[type="file"], input[type="numb
 input[type=submit] {border: none;}
 caption{display: none;}
 h1,h2,h3,h4,h5,h6 {font-weight: normal;}
-
 .sr-only {.sr-only;}
 [role="button"] {cursor: pointer;}
-
 
 /*input*/
 textarea,
 input[type="text"], input[type="password"], input[type="number"], input[type="email"] {.input-default;}
 input[type="number"] {padding-right:0;width:35px;}
 input[type="text"]::-ms-clear {display: none;}
-input[type="file"] {min-height: 30px; font-size: 13px; line-height: 28px; color: #666;}
-.write input[type="text"], .write input[type="password"], .write input[type="file"],  .write input[type="number"], .write input[type="email"] {font-size: 12px;}
-textarea {padding-top: 10px; padding-bottom: 10px; line-height: 1.5;}
-select:disabled {background:#f7f7f7; color:#bbb;}
-input[type="text"]:disabled, button:disabled ,input[type="password"]:disabled {color:#bbb;cursor:default;}
+input[type="file"] {.input-default(@p:0; @bd-width:0; @radius:0);}
+.write input[type="text"], .write input[type="password"], .write input[type="file"],  .write input[type="number"], .write input[type="email"] {font-size: @font-size;}
+textarea {.textarea-default;}
+select:disabled {.input-disabled;}
+input[type="text"]:disabled, button:disabled ,input[type="password"]:disabled {color: @font-color-dark; cursor:default;}
 input.tech-tit {background-color: #f5f5f5; color: #009cff; font-weight: bold;}
 label + input[type="radio"], label + input[type="checkbox"] {margin-left:5px;}
 .select {
 	height: 30px; line-height: 28px; padding: 0 33px 0 13px;
-	border: 1px solid #e8e8e8; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
+	border: 1px solid #e8e8e8; 
+	.border-radius(2px);
 	background: #fff url(../images/ic_sch_sel_arr.png) no-repeat 100% 50%;
-	-webkit-appearance: none; -moz-appearance: none; appearance: none; 
-	-webkit-box-shadow: none; box-shadow: none;
+	.box-shadow(none); .apprance(none);
 }
 .select::-ms-expand {display: none;}
 .search-sec .select + input[type="text"] {margin-left: -6px; -webkit-border-top-left-radius: 0; -moz-border-top-left-radius: 0; border-top-left-radius: 0; -webkit-border-bottom-left-radius: 0; -moz-border-bottom-left-radius: 0; border-bottom-left-radius: 0;}

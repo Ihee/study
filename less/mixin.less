@@ -4,9 +4,14 @@
 .apprance(@type) {appearance: @type; -webkit-appearance: @type; -moz-appearance: @type;}
 .box-shadow(@shadow) {-webkit-box-shadow: @shadow; box-shadow: @shadow;}
 
+//default tag setting
+.default-tag-set {
+	margin: 0; padding: 0; line-height: 1.1; box-sizing: border-box;
+}
+
 //font setting
 .default-font-set {
-	font-family:@font-family;
+	font-family: @font-family;
 	font-size: @font-size; 
 	color: @font-color; 
 	-webkit-text-size-adjust: none;
@@ -18,16 +23,23 @@
 }
 
 //input setting
-.input-border(@border-color:#e8e8e8) {
-	border: 1px solid @border-color;
+.input-border(@bd-width:1px; @bd-color:#e8e8e8;) {
+	border: @bd-width solid @bd-color;
 }
-.input-default(@h:30px; @p:10px;) {
+.input-default(@h:30px; @p:10px; @bd-width:1px; @bd-color:#e8e8e8; @radius:2px;) {
 	min-height: @h; 
 	padding: 0 @p; 
 	background-color: @input-bg; 
-	.input-border; 
-	.border-radius(2px); 
-	font-size: @font-size + 1px; 
-	line-height: @h - 2px; 
+	.input-border(@bd-width; @bd-color); 
+	.border-radius(@radius); 
+	font-size: @font-size + 1; 
+	line-height: @h - 2; 
 	color: @font-color;
+}
+.input-disabled() {
+	background-color: @input-bg-dark; 
+	color: @font-color-dark;
+}
+.textarea-default(@pt:10px; @pb:10px; @lh:1.5;){
+	padding-top: @pt; padding-bottom: @pb; line-height: @lh;
 }

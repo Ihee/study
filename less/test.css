@@ -1,4 +1,10 @@
 @charset "utf-8";
+.default-tag-set {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1;
+  box-sizing: border-box;
+}
 .default-font-set {
   font-family: '맑은 고딕', Malgun Gothic, sans-serif;
   font-size: 12px;
@@ -228,6 +234,12 @@ input[type="text"]::-ms-clear {
 }
 input[type="file"] {
   min-height: 30px;
+  padding: 0 0;
+  background-color: #fff;
+  border: 0 solid #e8e8e8;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   font-size: 13px;
   line-height: 28px;
   color: #666;
@@ -245,13 +257,13 @@ textarea {
   line-height: 1.5;
 }
 select:disabled {
-  background: #f7f7f7;
-  color: #bbb;
+  background-color: #cccccc;
+  color: #4d4d4d;
 }
 input[type="text"]:disabled,
 button:disabled,
 input[type="password"]:disabled {
-  color: #bbb;
+  color: #4d4d4d;
   cursor: default;
 }
 input.tech-tit {
@@ -272,11 +284,11 @@ label + input[type="checkbox"] {
   -moz-border-radius: 2px;
   border-radius: 2px;
   background: #fff url(../images/ic_sch_sel_arr.png) no-repeat 100% 50%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .select::-ms-expand {
   display: none;
