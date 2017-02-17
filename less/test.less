@@ -6,35 +6,38 @@
 /*reset*/
 html,body {width: 100%; height: 100%;}
 body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,a,button,select,ul,li,span,em{margin: 0;padding: 0; line-height: 1.1; box-sizing: border-box;}
-body,input,textarea,select,button,table{font-family:'맑은 고딕', Malgun Gothic, sans-serif; font-size: 12px; color: #666; -webkit-text-size-adjust: none;}
+body,input,textarea,select,button,table{.default-font-set;}
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section{display: block; margin: 0;padding: 0; line-height: 1.1; box-sizing: border-box;}
 body{position: relative}
 img,fieldset{border: 0}
 img{vertical-align: top}
 ul,ol{list-style: none}
 em,address,i{font-style: normal}
-hr,legend{display: none}
+hr,legend{.sr-only;}
 a{text-decoration: none}
-a:hover, a:active, a:focus{-moz-transition: .15s; -webkit-transition: .15s; transition: .15s; text-decoration: none;}
-a, a:hover, a:focus{color: #666;}
-button {overflow: visible; margin: 0; background-color: transparent; border: none; -webkit-appearance: button; cursor: pointer; font: inherit; color: inherit;}
+a:hover,
+a:active,
+a:focus{.transition(.15s); text-decoration: none;}
+a, 
+a:hover, 
+a:focus{color: @font-color;}
+button {overflow: visible; margin: 0; background-color: transparent; border: none; cursor: pointer; font: inherit; color: inherit; .apprance(button);}
 button::-moz-focus-inner,
 input::-moz-focus-inner {padding: 0; border: 0;}
 textarea{resize: none;}
-.blind,hr{visibility: hidden;overflow: hidden;position: absolute;top: 0;left: -9999px;width: 0;height: 0;font-size: 0;line-height: 0}
-input[type="text"], input[type="password"], input[type="file"], input[type="number"], input[type="email"],textarea,select{-webkit-box-shadow: none; box-shadow: none; appearance: none; -webkit-appearance: none; -moz-appearance: none;}
+.blind,hr{.sr-only;}
+input[type="text"], input[type="password"], input[type="file"], input[type="number"], input[type="email"],textarea,select{.box-shadow(none); .apprance(none);}
 input[type=submit] {border: none;}
 caption{display: none;}
 h1,h2,h3,h4,h5,h6 {font-weight: normal;}
 
-.sr-only {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;}
-.hidden {display: none !important;}
+.sr-only {.sr-only;}
 [role="button"] {cursor: pointer;}
 
 
 /*input*/
 textarea,
-input[type="text"], input[type="password"], input[type="number"], input[type="email"] {min-height: 30px; padding: 0 10px; background-color: #fff; border: 1px solid #e8e8e8; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; font-size: 13px; line-height: 28px; color: #666;}
+input[type="text"], input[type="password"], input[type="number"], input[type="email"] {.input-default;}
 input[type="number"] {padding-right:0;width:35px;}
 input[type="text"]::-ms-clear {display: none;}
 input[type="file"] {min-height: 30px; font-size: 13px; line-height: 28px; color: #666;}
