@@ -72,47 +72,59 @@ input:-ms-input-placeholder {color: #cbcbcb;}
 
 /*layout*/
 #wrapper {position: relative; width: 100%; min-height: 100%;}
-#lnb {position: fixed; top: 0; bottom: 0; left: 0; z-index: 10; overflow: hidden; width: 230px; background-color: #35374c; -moz-transition: .1s; -webkit-transition: .1s; transition: .1s;}
-#lnb.closed {width: 38px;}
-#container {min-width: 970px; min-height: 850px; padding: 0 45px 100px 275px; -moz-transition: .1s; -webkit-transition: .1s; transition: .1s;}
-#container.closed {padding-left: 83px;}
-#container #content {}
+#container {min-width: 970px; min-height: 850px; padding: 0 45px 100px 275px; .transition(.1s);
+	&.closed {padding-left: 83px;}
+}
 
 /* LNB */
-#lnb h1 {width: 100%; height: 45px; background: #1d1f32 url(../images/top_logo.png) no-repeat 50% 50%; text-align: center;}
-#lnb h1 a {display: block; height: 100%;}
-#lnb.closed h1 {background-image: url(../images/top_logo_close.png);}
-#lnb .lnb-control {display: block; width: 100%; height: 44px; background: url(../images/ic_lnb_close.png) no-repeat 50% 50%;}
-#lnb .lnb-control.closed {background-image: url(../images/ic_lnb_open.png);}
-#lnb nav > ul{border-top: 1px solid #1f2136;}
-#lnb nav a {display: block; position: relative; width: 100%; height: 36px; padding-top: 10px; border-bottom: 1px solid #1f2136; color: #fff;}
-#lnb nav a:before {position: absolute; top: 0; left: 0; width: 38px; height: 35px; content: ""; background-repeat: no-repeat; background-position: 50% 50%;}
-#lnb nav > ul > li > a {padding-left: 36px;}
-/* 1뎁스 메뉴별 아이콘 */
-#lnb nav > ul > li > a.member:before {background-image: url(../images/ic_lnb_member.png);}
-#lnb nav > ul > li > a.partner:before {background-image: url(../images/ic_lnb_partner.png);}
-#lnb nav > ul > li > a.calc:before {background-image: url(../images/ic_lnb_calc.png);}
-#lnb nav > ul > li > a.batch:before {background-image: url(../images/ic_lnb_batch.png);}
-#lnb nav > ul > li > a.charging:before {background-image: url(../images/ic_lnb_charging.png);}
-#lnb nav > ul > li > a.press:before {background-image: url(../images/ic_lnb_press.png);}
-#lnb nav > ul > li > a.china:before {background-image: url(../images/ic_lnb_china.png);}
-#lnb nav > ul > li > a.support:before {background-image: url(../images/ic_lnb_support.png);}
-#lnb nav > ul > li > a.notice:before {background-image: url(../images/ic_lnb_notice.png);}
-#lnb nav > ul > li > a.console-notice:before {background-image: url(../images/ic_lnb_console-notice.png);}
-#lnb nav > ul > li > a.customer:before {background-image: url(../images/ic_lnb_customer.png);}
-#lnb nav > ul > li > a.authority:before {background-image: url(../images/ic_lnb_authority.png);}
+#lnb {position: fixed; top: 0; bottom: 0; left: 0; z-index: 10; overflow: hidden; width: 230px; background-color: #35374c; .transition(.1s);
+	&.closed {width: 38px;}
+	h1 {width: 100%; height: 45px; background: #1d1f32 url(../images/top_logo.png) no-repeat 50% 50%; text-align: center;
+		a {display: block; height: 100%;}
+	}
+	&.closed h1 {background-image: url(../images/top_logo_close.png);}
+	.lnb-control {display: block; width: 100%; height: 44px; background: url(../images/ic_lnb_close.png) no-repeat 50% 50%;
+		&.closed {background-image: url(../images/ic_lnb_open.png);}
+	}
+	nav{
+		a {display: block; position: relative; width: 100%; height: 36px; padding-top: 10px; border-bottom: 1px solid #1f2136; color: #fff;
+			&:before {position: absolute; top: 0; left: 0; width: 38px; height: 35px; content: ""; background-repeat: no-repeat; background-position: 50% 50%;}
+		}
+		& > ul {border-top: 1px solid #1f2136;
+			& > li > a {padding-left: 36px;
+				// 1뎁스 메뉴별 아이콘
+				&.member:before {background-image: url(../images/ic_lnb_member.png);}
+				&.partner:before {background-image: url(../images/ic_lnb_partner.png);}
+				&.calc:before {background-image: url(../images/ic_lnb_calc.png);}
+				&.batch:before {background-image: url(../images/ic_lnb_batch.png);}
+				&.charging:before {background-image: url(../images/ic_lnb_charging.png);}
+				&.press:before {background-image: url(../images/ic_lnb_press.png);}
+				&.china:before {background-image: url(../images/ic_lnb_china.png);}
+				&.support:before {background-image: url(../images/ic_lnb_support.png);}
+				&.notice:before {background-image: url(../images/ic_lnb_notice.png);}
+				&.console-notice:before {background-image: url(../images/ic_lnb_console-notice.png);}
+				&.customer:before {background-image: url(../images/ic_lnb_customer.png);}
+				&.authority:before {background-image: url(../images/ic_lnb_authority.png);}
+				&:after {position: absolute; top: 0; right: 0; width: 22px; height: 35px; content: ""; background: url(../images/ic_lnb_arr_dn.png) no-repeat 0 50%; opacity: 1; -moz-transition-delay: .1s; -webkit-transition-delay: .1s; transition-delay: .1s;}
+			}
 
-#lnb nav > ul > li > a:after {position: absolute; top: 0; right: 0; width: 22px; height: 35px; content: ""; background: url(../images/ic_lnb_arr_dn.png) no-repeat 0 50%; opacity: 1; -moz-transition-delay: .1s; -webkit-transition-delay: .1s; transition-delay: .1s;}
-#lnb nav > ul > li.active > a:after {background-image: url(../images/ic_lnb_arr_up.png);}
-#lnb.closed nav > ul > li > a:after {opacity: 0;}
-#lnb nav > ul > li > ul{display: none;}
-/*#lnb nav > ul > li.active > ul {display: block;}*/
-#lnb.closed nav > ul > li.active > ul {display: none;}
-#lnb nav > ul > li > ul > li {background-color: #1b1d30;}
-#lnb nav > ul > li > ul > li.active {background-color: #009cff;}
-#lnb nav > ul > li > ul > li > a {min-height: 36px; padding-left: 44px;}
-#lnb nav > ul > li > ul > li > a:before {background-image: url(../images/ic_lnb_d2.png);}
-#lnb nav > ul > li > ul > li.active > a:before {background-image: url(../images/ic_lnb_d2_on.png);}
+			& > li.active > a:after {background-image: url(../images/ic_lnb_arr_up.png);}
+			
+			& > li > ul{display: none;}
+			/*#lnb nav > ul > li.active > ul {display: block;}*/
+			& > li > ul > li {background-color: #1b1d30;
+				& > a {min-height: 36px; padding-left: 44px;
+					&:before {background-image: url(../images/ic_lnb_d2.png);}
+				}
+				&.active {background-color: #009cff;
+					& > a:before {background-image: url(../images/ic_lnb_d2_on.png);}
+				}
+			}
+		}
+	}
+	&.closed nav > ul > li > a:after {opacity: 0;}
+	&.closed nav > ul > li.active > ul {/*display: none;*/}
+}
 
 /* 상단 information */
 #info-sec {overflow: hidden; height: 45px; margin: 0 -45px; border-bottom: 1px solid #ededee;}
