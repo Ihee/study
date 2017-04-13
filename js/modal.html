@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-3.2.0.min.js"></script>
+	<style>
+		body,html,h4,button {display: block;margin: 0; padding: 0;}
+		.fade {opacity: 0; 
+			-webkit-transition: opacity .15s linear; 
+			-moz-transition: opacity .15s linear; 
+			-ms-transition: opacity .15s linear; 
+			-o-transition: opacity .15s linear; 
+			transition: opacity .15s linear;
+		}
+		.modal-back {position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1000; background-color: #000;}
+		.modal {display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1010;}
+		.fade.in {opacity: 1;}
+		.modal-back.in {opacity: 0.5;}
+		.modal-open {overflow: hidden; padding-right: 17px;}
+		.modal-open .modal {overflow-x: hidden; overflow-y: auto;}
+		.modal-dialog {position: relative; width: 600px; margin: 0 auto; background-color: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+			$(document).on("click", ".open-modal", function() { //모달 띄우기
+				var id = $(this).attr("data-target");
+				modalOpen(id);
+			});
+			$(document).on("click", ".modal-close", function() {//모달 닫기
+				var id = $(this).attr("data-dismiss");
+				modalClose(id);
+			});
+			$(document).on("click", ".modal", function() {// 모달 빈 영역 클릭 시 닫힘
+				if ($(".modal.fade.in").length < 2){//모달이 1개 실행된 상황에서만 작동
+					$("body").removeClass("modal-open");
+					$(this).hide().removeClass("in");
+					modalDimClose();
+				}
+			});
+			$(document).on("click", ".modal > .modal-dialog", function(e) {//모달 빈 영역 클릭 시 버블링 방지
+				e.stopPropagation();
+			});
+		});
+		
+		function modalOpen(id) {
+			var id = id;
+			$("body").addClass("modal-open");
+			$(id).show().addClass("in");
+			modalDimOpen();
+			setModalMt(id);
+		}
+		function modalDimOpen() {
+			if ($(".modal-back").length < 1){ //dim 레이어 없을 경우에만 생성됨
+				$('body').append('<div class="modal-back fade in"></div>');
+			}
+		}
+
+		function modalClose(id) {
+			var id = id;
+			$("body").removeClass("modal-open");
+			modalDimClose();
+			$(id).hide().removeClass("in");
+		}
+		function modalDimClose() {
+			if ($(".modal.fade.in").length < 2){//모달이 1개 실행된 상황에서만 작동
+				$(".modal-back").remove();
+			}
+		}
+
+		function setModalMt(id) {//모달 높이 위치값 세팅
+			var id = id;
+			var winH = $(window).height();
+
+			if ($(id).is(":visible") == true){
+				var modalH = $(id).find(".modal-dialog").height() + 60;
+			}
+			
+			if (modalH < winH) { //모달이 윈도우 높이보다 작은 경우 화면 가운데 정렬
+				var top = "50%"
+				var mt = -((modalH - 60) / 2);
+				var mb = 0;
+			}
+			else { //모달이 윈도우 높이보다 큰 경우 위 아래 여백 줌
+				var top = 0;
+				var mt = "30px";
+				var mb = "30px";
+			}
+			$(id).find(".modal-dialog").css({"top":top,"margin-top":mt,"margin-bottom":mb})
+		}
+	</script>
+</head>
+<body>
+	<button class="open-modal" data-target="#modal1">모달 열기</button>
+	<section id="modal1" class="modal fade" tabindex="-1">
+		<div class="modal-dialog">
+			<h4>모달팝업1</h4>
+			<button class="modal-close" data-dismiss="#modal1">X</button>
+		</div>
+	</section>
+</body>
+</html>
